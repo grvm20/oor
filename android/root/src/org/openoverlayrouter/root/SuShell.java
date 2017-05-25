@@ -49,10 +49,17 @@ public class SuShell {
 		try {
 			stdin.writeBytes(command+"\n");
 			stdin.flush();
-			res = stdout.readLine();
+			if (stdout.ready()) {
+				res = stdout.readLine();
+			}
+			if (stderr.ready()) {
+				res = stdout.readLine();
+			}
+			createLogFile(res);
 		} catch (IOException e) {
-			e.printStackTrace();
-			return res;
+			StringWriter errors = new StringWriter();
+			e.printStackTrace(new PrintWriter(errors));
+			createLogFile(errors.toString());
 		}
 		return res;
 	}
@@ -66,6 +73,24 @@ public class SuShell {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public void createLogFile(String message)
+	{
+		/*
+		 * If a configuration file is not found, a default configuration file is created.
+		 * */
+		try {
+
+			FileWriter fstream = new FileWriter(log_file);
+			BufferedWriter out = new BufferedWriter(fstream);
+			out.append(message);
+			out.close();
+
+		} catch (Exception e) {
+			//displayMessage("Error while writing Default Conf file to sdcard!!", false, null);
+		}
+
 	}
 
 }
