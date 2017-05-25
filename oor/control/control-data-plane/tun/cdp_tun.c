@@ -230,11 +230,13 @@ tun_control_dp_get_default_addr(oor_ctrl_t *ctrl, int afi)
 
     switch (afi){
     case AF_INET:
+        OOR_LOG(LDBG_1, "Checkpoint CDP_TUN");
         if (data->default_ctrl_iface_v4 != NULL){
             addr = iface_address(data->default_ctrl_iface_v4,AF_INET);
         }
         break;
     case AF_INET6:
+        OOR_LOG(LDBG_1, "Checkpoint CDP_TUN");
         if (data->default_ctrl_iface_v6 != NULL){
             addr = iface_address(data->default_ctrl_iface_v6,AF_INET6);
         }

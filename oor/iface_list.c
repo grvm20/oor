@@ -432,6 +432,15 @@ get_any_output_iface(int afi)
     case AF_INET:
         glist_for_each_entry(iface_it,interface_list){
             iface = (iface_t *)glist_entry_data(iface_it);
+            if (iface->ipv4_address){
+                OOR_LOG(LDBG_1, "Checkpoint 1 iface: %s", iface->ipv4_address);
+            }
+            if(!lisp_addr_is_no_addr(iface->ipv4_address)){
+                OOR_LOG(LDBG_1, "Checkpoint 2 iface");
+            }
+            if(iface->status == UP){
+                OOR_LOG(LDBG_1, "Checkpoint 3 iface");
+            }
             if (iface->ipv4_address && !lisp_addr_is_no_addr(iface->ipv4_address)
                     && (iface->status == UP)) {
                 find_iface = iface;
@@ -442,6 +451,15 @@ get_any_output_iface(int afi)
     case AF_INET6:
         glist_for_each_entry(iface_it,interface_list){
             iface = (iface_t *)glist_entry_data(iface_it);
+            if (iface->ipv4_address){
+                OOR_LOG(LDBG_1, "Checkpoint 1 iface: %s", iface->ipv4_address);
+            }
+            if(!lisp_addr_is_no_addr(iface->ipv4_address)){
+                OOR_LOG(LDBG_1, "Checkpoint 2 iface");
+            }
+            if(iface->status == UP){
+                OOR_LOG(LDBG_1, "Checkpoint 3 iface");
+            }
             if (iface->ipv6_address && !lisp_addr_is_no_addr(iface->ipv6_address)
                     && (iface->status == UP)) {
                 find_iface = iface;

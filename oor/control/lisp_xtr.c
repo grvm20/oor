@@ -1171,6 +1171,7 @@ build_and_send_encap_map_request(lisp_xtr_t *xtr, lisp_addr_t *seid,
 
     m = mcache_entry_mapping(mce);
     deid = mapping_eid(m);
+    OOR_LOG(LDBG_1, "Checkpoint LISP XTR M: %s and deid: %s", m, deid);
 
     /* BUILD Map-Request */
 
@@ -1199,6 +1200,7 @@ build_and_send_encap_map_request(lisp_xtr_t *xtr, lisp_addr_t *seid,
     srloc = NULL;
     drloc = get_map_resolver(xtr);
     if (!drloc){
+        OOR_LOG(LDBG_1, "Checkpoint LISP XTR 2 Failure");
         lisp_msg_destroy(b);
         return (BAD);
     }
@@ -1207,7 +1209,7 @@ build_and_send_encap_map_request(lisp_xtr_t *xtr, lisp_addr_t *seid,
     send_msg(&xtr->super, b, &uc);
 
     lisp_msg_destroy(b);
-
+    OOR_LOG(LDBG_1, "Checkpoint LISP XTR Success");
     return(GOOD);
 }
 

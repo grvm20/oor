@@ -223,9 +223,10 @@ vpnapi_control_dp_get_default_addr(oor_ctrl_t *ctrl, int afi)
 {
     iface_t *iface;
     lisp_addr_t *addr = NULL;
-
+    OOR_LOG(LDBG_1, "Checkpoint CDP_VPNAPI 1");
     iface = get_any_output_iface(afi);
     if (iface != NULL){
+        OOR_LOG(LDBG_1, "Checkpoint CDP_VPNAPI 2");
         addr = iface_address(iface, afi);
     }
 
