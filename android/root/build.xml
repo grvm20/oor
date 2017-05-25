@@ -72,6 +72,12 @@
             <arg value="NDK_DEBUG=1"/>
         </exec>
         <move file="./libs/armeabi/oor" tofile="./libs/armeabi/liboor.so"/>
+	<move file="./libs/arm64-v8a/oor" tofile="./libs/arm64-v8a/liboor.so"/>
+	<move file="./libs/armeabi-v7a/oor" tofile="./libs/armeabi-v7a/liboor.so"/>
+	<move file="./libs/mips/oor" tofile="./libs/mips/liboor.so"/>
+	<move file="./libs/mips64/oor" tofile="./libs/mips64/liboor.so"/>
+	<move file="./libs/x86/oor" tofile="./libs/x86/liboor.so"/>
+	<move file="./libs/x86_64/oor" tofile="./libs/x86_64/liboor.so"/>
     </target>
     
     
